@@ -1,3 +1,4 @@
+import { transformDocument } from "@prisma/client/runtime"
 import Render from "./Render"
 import { PrismaClient } from "@prisma/client"
 
@@ -11,19 +12,15 @@ export default async function Home(props:any) {
         where: {
             slug: props.params.slug
         },
-        select: {
-            id: true,
-            name: true,
-            description: true,
-            image_url: true,
-            sample_quantity: true,
-            regular_quantity: true,
-            exclusive_quantity: true,
-            wheel_quantity: true,
-            small_cereal_quantity: true,
-            large_cereal_quantity: true,
-            bag_dicks_quantity: true,
-            slug: true,
+        include: {
+            Sample: true,
+            Regular: true,
+            Exclusive: true,
+            Large: true,
+            Wheel: true,
+            Small_Cereal_Bag: true,
+            Large_Cereal_Bag: true,
+            bag_dicks: true
         }
     })
 

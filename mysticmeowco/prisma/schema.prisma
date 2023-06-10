@@ -11,25 +11,81 @@ datasource db {
 }
 
 model Product {
-  id                    Int     @id @default(autoincrement())
-  name                  String
-  description           String?
-  sample_price          String?
-  sample_quantity       Int?
-  regular_price         String?
-  regular_quantity      Int?
-  exclusive_price       String?
-  exclusive_quantity    Int?
-  large_price           String?
-  large_quantity        Int?
-  wheel_price           String?
-  wheel_quantity        Int?
-  small_cereal_price    String?
-  small_cereal_quantity Int?
-  large_cereal_price    String?
-  large_cereal_quantity Int?
-  bag_dicks_price       String?
-  bag_dicks_quantity    Int?
-  image_url             String?
-  slug                  String?
+  id               Int               @id @default(autoincrement())
+  name             String
+  description      String?
+  slug             String?
+  image_url        String?
+  Sample           Sample?
+  Regular          Regular?
+  Exclusive        Exclusive?
+  Large            Large?
+  Wheel            Wheel?
+  Small_Cereal_Bag Small_Cereal_Bag?
+  Large_Cereal_Bag Large_Cereal_Bag?
+  bag_dicks        bag_dicks?
+}
+
+model Sample {
+  id               Int     @id @default(autoincrement())
+  product          Product @relation(fields: [productId], references: [id])
+  productId        Int     @unique
+  sample_price     String?
+  sample_inventory Int?
+}
+
+model Regular {
+  id                Int     @id @default(autoincrement())
+  product           Product @relation(fields: [productId], references: [id])
+  productId         Int     @unique
+  regular_price     String?
+  regular_inventory Int?
+}
+
+model Exclusive {
+  id                  Int     @id @default(autoincrement())
+  product             Product @relation(fields: [productId], references: [id])
+  productId           Int     @unique
+  exclusive_price     String?
+  exclusive_inventory Int?
+}
+
+model Large {
+  id              Int     @id @default(autoincrement())
+  product         Product @relation(fields: [productId], references: [id])
+  productId       Int     @unique
+  large_price     String?
+  large_inventory Int?
+}
+
+model Wheel {
+  id              Int     @id @default(autoincrement())
+  product         Product @relation(fields: [productId], references: [id])
+  productId       Int     @unique
+  wheel_price     String?
+  wheel_inventory Int?
+}
+
+model Small_Cereal_Bag {
+  id                        Int     @id @default(autoincrement())
+  product                   Product @relation(fields: [productId], references: [id])
+  productId                 Int     @unique
+  small_cereal_bag_price    String?
+  small_cereal_bag_quantity Int?
+}
+
+model Large_Cereal_Bag {
+  id                        Int     @id @default(autoincrement())
+  product                   Product @relation(fields: [productId], references: [id])
+  productId                 Int     @unique
+  large_cereal_bag_price    String?
+  large_cereal_bag_quantity Int?
+}
+
+model bag_dicks {
+  id                 Int     @id @default(autoincrement())
+  product            Product @relation(fields: [productId], references: [id])
+  productId          Int     @unique
+  bag_dicks_price    String?
+  bag_dicks_quantity Int?
 }

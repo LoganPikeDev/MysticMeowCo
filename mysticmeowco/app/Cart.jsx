@@ -39,11 +39,7 @@ export default function Cart() {
                   <h5>{item.name}</h5>
                 </div>
                 <div className="flex bottom">
-                  <p>
-                    <span className="minus"><AiOutlineMinus /></span>
-                    <span className="quantity">{qty}</span>
-                    <span className="plus"><AiOutlinePlus /></span>
-                  </p>
+                  <h3>Quantity: {qty}</h3>
                 </div>
                 </div>
             </div>

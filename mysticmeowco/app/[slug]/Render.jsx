@@ -7,10 +7,17 @@ export default function Render(product) {
 
 
     console.log(product.product)
+    console.log(product.product.Regular.regular_price)
+
+
 
     const [selected, setSelected] = useState(0)
     const { incQty, decQty, qty, onAdd } = useStateContext()
     console.log(selected)
+
+
+    
+
 
 
     function handleChange(e) {
@@ -26,8 +33,8 @@ export default function Render(product) {
         
         var letr =  e.target.select.value.match(/[a-zA-Z]+/g);
         console.log(letr)
-
-        onAdd(product.product, e.target.quantity.value)
+        console.log(parseInt(e.target.quantity.value))
+        onAdd(product.product.name, parseInt(e.target.quantity.value), letr)
 
 
 
@@ -53,8 +60,9 @@ export default function Render(product) {
                         <form className="flex flex-col" onSubmit={(e)=> handleForm(e)}>
                             <label className="text-2xl pt-2">Select Size</label>
                             <select id="select"  className="w-[20%] mt-2 outline" onChange={(e)=> handleChange(e)}>
-                                {product.product.sample_quantity > 0 ? <option  value={product.product.sample_quantity + 'Sample'}>Sample</option> : null}
-                                {product.product.regular_quantity > 0 ? <option value={product.product.regular_quantity  + 'Regular'}>Regular</option> : null}
+                                <option value="0">Select Size</option>
+                                {product.product.Sample.sample_inventory> 0 | null ? <option  value={product.product.sample_quantity + 'Sample'}>Sample</option> : null}
+                                {product.product.Regular.regular_inventory > 0 ? <option value={product.product.regular_quantity  + 'Regular'}>Regular</option> : null}
                                 {product.product.exclusive_quantity > 0 ? <option value="exclusive">Exclusive</option> : null}
                                 {product.product.wheel_quantity > 0 ? <option value="wheel">Wheel</option> : null}
                                 {product.product.small_cereal_quantity > 0 ? <option value="small_cereal">Small Cereal</option> : null}
