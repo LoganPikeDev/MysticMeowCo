@@ -146,8 +146,8 @@ export default function Render(product) {
                             </select>
                                 
 
-                            <label className="text-2xl pt-2">Quantity: Max Quantity {selected-2 <= 0 ? 0 : selected -2}</label>
-                            <input type="number" id="quantity" className="w-[20%] mt-2 outline" placeholder="Quantity" max={selected -2 } defaultValue={0} min={0}/>
+                            <label className="text-2xl pt-2">Quantity: Max Quantity {selected}</label>
+                            <input type="number" id="quantity" className="w-[20%] mt-2 outline" placeholder="Quantity" max={selected} defaultValue={0} min={0}/>
 
                             <label className="text-2xl pt-2">Price: ${priceShow}</label>
                               
