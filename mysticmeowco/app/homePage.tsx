@@ -19,7 +19,7 @@ export default function HomePage( products:any ) {
             </div>
 
             <div className="products-container">
-                {product_info.map((product:any) => <Product product={product} />)}
+                {product_info.map((product:any) => <Product key={product.id} product={product} />)}
             </div>
 
             <FooterBanner />
