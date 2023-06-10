@@ -1,11 +1,32 @@
-import Image from 'next/image'
+import { PrismaClient } from "@prisma/client"
+import HomePage from "./homePage"
 
-export default function Home() {
+
+export default async function Home() {
+
+  const client = new PrismaClient()
+
+    const products = await client.product.findMany({
+      select:{
+        id: true,
+        name: true,
+        description: true,
+        image_url: true,
+        sample_quantity: true,
+        regular_quantity: true,
+        exclusive_quantity: true,
+        wheel_quantity: true,
+        small_cereal_quantity: true,
+        large_cereal_quantity: true,
+        bag_dicks_quantity: true,
+        slug: true,
+      }
+    })
+ 
+
+  console.log(products)
   return (
-    <div className='h-screen grid place-content-center bg-gradient-to-br  from-purple-100 to-purple-300'>
-      <Image src='/logo.jpeg' alt='Logo' height={250} width={250} className=' rounded-full' />
-      <h1 className='text-center text-xl font-bold text-black'>Coming Soon!</h1>
-      <h2 className='text-center font-bold'>Wax Melts And More!</h2>
-    </div>
+      <HomePage products={products} />
+    
   )
 }
