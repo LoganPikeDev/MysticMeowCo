@@ -3,19 +3,9 @@
 
 export default function FooterBanner() {
     return (
-        <div className="footer-banner-container">
-            <div className="banner-desc">
-                <div className="left">
-                    <p>test</p>
-                    <h3>test2</h3>
-                    <h3>test3</h3>
-                    <p>test</p>
-                </div>
-                <div className="right">
-                    <p>test</p>
-                    <h3>test2</h3>
-                    <p>test</p>
-                </div>
+        <div className="w-full h-30 bg-gray-500 mt-10 relative bottom-0">
+            <div className="flex justify-center items-center ">
+                <h1 className="text-sm pt-5 text-white font-bold">Mystic Meow & Co. All Rights Reserved</h1>
             </div>
         </div>
     )

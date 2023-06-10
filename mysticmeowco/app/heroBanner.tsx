@@ -1,16 +1,12 @@
-
+import Image from "next/image"
 
 export default function HeroBanner() {
     return (
-       <div className="hero-banner-container">
-            <div>
-                <p className="text-white font-extrabold font-serif text-4xl">Mystic Meow & Co</p>
-                <h3 className="text-white font-bold text-2xl pt-14">A New Era</h3>
-                <h3 className="text-white font-bold text-2xl pt-7">of Scents!</h3>
-
-                <p className="text-white font-semibold text-lg w-[20%] pt-8">We at Mystic Meow & Co are excited for the future. We look forward to serving you!</p>
-
-                <img src="/removed.png" alt="banner Logo" className="hero-banner-image"></img>
+       <div className="w-full h-96 rounded-2xl bg-purple-500">
+            <div className="flex justify-center items-center flex-col">
+                <h1 className="text-3xl pt-5 text-white font-bold">Mystic Meow & Co.</h1>
+                <Image src="/removed.png" width={250} height={250} alt={'logo'} />
+                <h2 className="text-3xl pt-3 text-white font-bold">Grand Opening!</h2>
             </div>
 
        </div>

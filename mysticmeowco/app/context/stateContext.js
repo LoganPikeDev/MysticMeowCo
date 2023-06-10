@@ -1,7 +1,6 @@
 "use client"
 import React, { createContext, useContext, useState, useEffect} from "react";
 import { toast } from 'react-hot-toast'
-import { PrismaClient } from "@prisma/client";
 
 const Context = createContext({});
 
@@ -11,21 +10,26 @@ export const StateContext = ({ children }) => {
     const [qty, setQty] = useState(0);
     const [totalQuantity, setTotalQuantity] = useState(0);
 
-    const client = new PrismaClient()
+    console.log(cart.length)
+    console.log(totalQuantity)
+    console.log(cart)
 
-    const onAdd = (product, quantity, letr) => {
+    const onAdd = (product, quantity) => {
         const exist = cart.find((x) => x.id === product.id);
         if (exist) {
             setCart(
                 cart.map((x) =>
                     x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x,
-                    setQty(qty + quantity)
+                    
                 )
             );
+            
         } else {
             setCart([...cart, { ...product, qty: quantity }]);
-            setTotalQuantity(totalQuantity + 1);
+            setQty(product.quantity)
+            
         }
+        setTotalQuantity(cart.length)
     }
 
     
@@ -34,11 +38,13 @@ export const StateContext = ({ children }) => {
         const exist = cart.find((x) => x.id === product.id);
         if (exist.qty >= 1) {
             setCart(cart.filter((x) => x.id !== product.id));
+            setQty(qty - product.quantity)
+
         } else {
             setCart(
                 cart.map((x) =>
                     x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x,
-                    setQty(qty - 1)
+                    setQty(qty - product.quantity)
                 )
             );
         }
@@ -57,6 +63,7 @@ export const StateContext = ({ children }) => {
                 onAdd,
                 onRemove,
                 qty,
+                totalQuantity,
                 
             }}
         >

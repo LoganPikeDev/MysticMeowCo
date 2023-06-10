@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/[slug]/Render.jsx", "app/context/stateContext.js", "app/navbar.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/[slug]/Render.jsx", "app/context/stateContext.js", "app/navbar.jsx", "pages/api/stripe/createCheckoutSession.ts"],
   "exclude": ["node_modules"]
 }
