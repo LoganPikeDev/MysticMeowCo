@@ -20,7 +20,8 @@ export default async function Home(props:any) {
             Wheel: true,
             Small_Cereal_Bag: true,
             Large_Cereal_Bag: true,
-            bag_dicks: true
+            bag_dicks: true,
+            Clamshell: true,
         }
     })
 

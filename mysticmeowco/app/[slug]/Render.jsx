@@ -49,6 +49,11 @@ export default function Render(product) {
                 setSelected(product.product.bag_dicks.bag_dicks_quantity)
                 setPriceShow('5.00')
                 break;
+
+            case 'Clamshell':
+                setSelected(product.product.Clamshell.clamshell_quantity)
+                setPriceShow('4.95')
+                break;
             case '0':
                 setSelected(0)
                 setPriceShow('')
@@ -88,6 +93,9 @@ export default function Render(product) {
                 break;
             case 'bag_dicks':
                 price = product.product.bag_dicks.bag_dicks_price
+                break;
+            case 'Clamshell':
+                price = product.product.Clamshell.clamshell_price
                 break;
             case '0':
                 return null
@@ -143,6 +151,7 @@ export default function Render(product) {
                                 {product.product.Small_Cereal_Bag.small_cereal_bag_quantity > 0 ? <option value={"small_cereal"}>Small Cereal</option> : null}
                                 {product.product.Large_Cereal_Bag.large_cereal_bag_quantity > 0 ? <option value={"large_cereal"}>Large Cereal</option> : null}
                                 {product.product.bag_dicks.bag_dicks_quantity > 0 ? <option value={"bag_dicks"}>Bag of Dicks</option> : null}
+                                {product.product.Clamshell.clamshell_quantity > 0 ? <option value={"clamshell"}>Clamshell</option> : null}
                             </select>
                                 
 
